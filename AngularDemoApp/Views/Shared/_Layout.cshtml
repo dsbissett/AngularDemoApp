@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    </head>
+    <body>    
+        <div class="container">
+            @RenderBody()                
+        </div>
+
+        @Scripts.Render("~/scripts/application")   
+        @Scripts.Render("~/scripts/studentApp")
+
+        @*<script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/angular-resource.js"></script>
+        <script src="~/App/app.dependencies.js"></script>
+        <script src="~/App/app.js"></script>
+
+        <script src="~/App/Services/app.services.js"></script>
+        <script src="~/App/Controllers/app.controllers.js"></script>
+        <script src="~/App/Services/crudService.module.js"></script>
+        <script src="~/App/Controllers/student.module.js"></script>*@
+        @RenderSection("scripts", false)
+    </body>
+</html>

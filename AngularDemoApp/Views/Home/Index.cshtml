@@ -1,0 +1,66 @@
+﻿<style>
+    .btn {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .col-xs-4 > button {
+        width: 100%
+    }
+</style>
+<div class="row" ng-controller="app.controllers.StudentController as ctrl" ng-cloak>    
+    <div class="col-md-12">
+        <div class="panel panel-primary" ng-click="ctrl.clickHandler($event)">
+            <div class="panel-heading clearfix">
+                <div class="panel-title pull-left">
+                    Student Management
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button id="create" type="button" class="btn btn-lg btn-default" ng-class="{ disabled: ctrl.studentModel !== null }" ng-disabled="ctrl.studentModel !== null">Create</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="update" type="button" class="btn btn-lg btn-default" ng-class="{ disabled: ctrl.studentModel === null }" ng-disabled="ctrl.studentModel === null">Update</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <button id="delete" type="button" class="btn btn-lg btn-default" ng-class="{ disabled: ctrl.studentModel === null }" ng-disabled="ctrl.studentModel === null">Delete</button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Select:</td>
+                            <td>First Name:</td>
+                            <td>Last Name:</td>
+                            <td>Address:</td>
+                            <td>City:</td>
+                            <td>State:</td>
+                            <td>Zip:</td>
+                            <td>Phone:</td>
+                            <td>Email:</td>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="student in ctrl.studentList">
+                        <tr ng-class="{ info: ctrl.studentModel.studentID === student.studentID }">
+                            <td><input type="checkbox" ng-checked="ctrl.studentModel.studentID === student.studentID" id="{{ student.studentID }}" /></td>
+                            <td>{{ student.firstName }}</td>
+                            <td>{{ student.lastName }}</td>
+                            <td>{{ student.address }}</td>
+                            <td>{{ student.city }}</td>
+                            <td>Indiana</td>
+                            <td>{{ student.zipCode }}</td>
+                            <td>{{ student.phone }}</td>
+                            <td>{{ student.email }}</td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+    @Html.Partial("Includes/_student")
+</div>
+@section scripts{
+    @Scripts.Render("~/scripts/student")
+}

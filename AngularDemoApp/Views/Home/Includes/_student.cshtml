@@ -1,0 +1,102 @@
+﻿<div class="modal fade" id="studentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" ng-cloak>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ ctrl.status }} Student</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible" role="alert" id="changeAlert" ng-show="studentForm.$dirty && !studentForm.$pristine && ctrl.status === 'Update'">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Warning!</strong> Student data has changed!
+                        </div>                        
+                    </div>
+                    <form class="form-horizontal" name="studentForm" novalidate>
+                        <div class="">
+                            <div class="col-md-12">
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.firstName.$invalid && !studentForm.firstName.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>First Name:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="firstName" type="text" class="form-control" ng-model="ctrl.studentModel.firstName" required />
+                                        <span class="help-block" ng-show="studentForm.firstName.$error.required && !studentForm.firstName.$pristine">First name is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.lastName.$invalid && !studentForm.lastName.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>Last Name:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="lastName" type="text" class="form-control" ng-model="ctrl.studentModel.lastName" required />
+                                        <span class="help-block" ng-show="studentForm.lastName.$error.required && !studentForm.lastName.$pristine">Last name is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.address.$invalid && !studentForm.address.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>Address:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="address" type="text" class="form-control" ng-model="ctrl.studentModel.address" required />
+                                        <span class="help-block" ng-show="studentForm.address.$error.required && !studentForm.address.$pristine">Address is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.city.$invalid && !studentForm.city.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>City:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="city" type="text" class="form-control" ng-model="ctrl.studentModel.city" required />
+                                        <span class="help-block" ng-show="studentForm.city.$error.required && !studentForm.city.$pristine">City is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label>State:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" value="Indiana" disabled="disabled" />
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.zip.$invalid && !studentForm.zip.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>Postal Code:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="zip" type="text" class="form-control" ng-model="ctrl.studentModel.zipCode" required />
+                                        <span class="help-block" ng-show="studentForm.zip.$error.required && !studentForm.zip.$pristine">Postal Code is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.phone.$error.required && !studentForm.phone.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>Phone Number:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="phone" type="tel" class="form-control" ng-model="ctrl.studentModel.phone" required />
+                                        <span class="help-block" ng-show="studentForm.phone.$error.required && !studentForm.phone.$pristine">Phone number is required!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': studentForm.email.$invalid && !studentForm.email.$pristine }">
+                                    <div class="col-md-4">
+                                        <label>Email:</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input name="email" type="email" class="form-control" ng-model="ctrl.studentModel.email" required />
+                                        <span class="help-block" ng-show="studentForm.email.$error.required && !studentForm.email.$pristine">Email is required!</span>
+                                        <span class="help-block" ng-show="studentForm.email.$error.email && !studentForm.email.$pristine">Email is invalid!</span>                                        
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div> 
+                    </form>                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.formClose(studentForm)">Close</button>
+                <button type="button" class="btn btn-primary" ng-disabled="studentForm.$pristine || studentForm.$invalid" ng-click="ctrl.saveStudent(ctrl.status, studentForm)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
